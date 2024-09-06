@@ -2,6 +2,9 @@ const express = require("express");
 const Publicadora_controller = require("../controllers/Publicadora.js");
 const router = express.Router();
 
+app.use(express.json());
+app.use(toUpperCaseMiddleware);
+
 router.get("/", (req, res) => {
     res.json(Publicadora_controller.index());
 });

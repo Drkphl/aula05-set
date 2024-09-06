@@ -4,6 +4,10 @@ const app = express();
 const port = 5000;
 
 app.use(express.json());
+app.use(toUpperCaseMiddleware);
+app.post("/test", (req, res) => {
+    res.send(req.body);
+});
 
 app.listen(port, () => {
     console.log(`Server running in ${port} port`);

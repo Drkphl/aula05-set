@@ -2,6 +2,9 @@ const express = require("express");
 const Estudio_controller = require("../controllers/Estudio.js");
 const router = express.Router();
 
+app.use(express.json());
+app.use(toUpperCaseMiddleware);
+
 router.get("/", (req, res) => {
     res.json(Estudio_controller.index());
 });

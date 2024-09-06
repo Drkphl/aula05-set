@@ -2,6 +2,9 @@ const express = require("express");
 const Jogo_controller = require("../controllers/Jogo.js");
 const router = express.Router();
 
+app.use(express.json());
+app.use(toUpperCaseMiddleware);
+
 router.get("/", (req, res) => {
     res.json(Jogo_controller.index());
 });

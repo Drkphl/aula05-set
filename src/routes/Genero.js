@@ -2,6 +2,9 @@ const express = require("express");
 const Genero_controller = require("../controllers/Genero.js");
 const router = express.Router();
 
+app.use(express.json());
+app.use(toUpperCaseMiddleware);
+
 router.get("/", (req, res) => {
     res.json(Genero_controller.index());
 });
