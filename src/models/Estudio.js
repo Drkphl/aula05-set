@@ -3,13 +3,12 @@ let criado_em;
 let atualizado_em;
 
 const model = (body, id = nextId++) => {
+    if (criado_em == "") {
+        criado_em = new Date();
+    }
 
-    if(criado_em == ""){
-    criado_em = new Date(now)
-    
-}else{
-    if (body.nome != undefined) {
-        atualizado_em = new Date(now)
+    if (body.nome != undefined && body.nome != "") {
+        atualizado_em = new Date();
 
         return {
             id,
@@ -18,6 +17,5 @@ const model = (body, id = nextId++) => {
             atualizador_em: atualizado_em,
         };
     }
-}};
-
+};
 module.exports = model;

@@ -1,33 +1,20 @@
 let nextId = 1;
+let criado_em;
+let atualizado_em;
 
 const model = (body, id = nextId++) => {
-    const ano = body.ano;
-    let soNumeros = true;
+    if (criado_em == "") {
+        criado_em = new Date();
+    } else {
+        if (body.genero != undefined && isNaN(body.genero) && body.genero != "") {
+            atualizado_em = new Date();
 
-    ano.split("").forEach((el) => {
-        if (isNaN(Number(el))) {
-            soNumeros = false;
+            return {
+                id,
+                genero: body.genero,
+                criado_em: criado_em,
+                atualizador_em: atualizado_em,
+            };
         }
-    });
-
-    if (
-        body.titulo != undefined &&
-        body.autor != undefined &&
-        body.genero != undefined &&
-        body.titulo != "" &&
-        body.autor != "" &&
-        body.genero != "" &&
-        body.ano != "" &&
-        soNumeros == true
-    ) {
-        return {
-            id,
-            nome: body.nome,
-            autor: body.autor,
-            genero: body.genero,
-            ano: body.ano,
-        };
     }
 };
-
-module.exports = model;
